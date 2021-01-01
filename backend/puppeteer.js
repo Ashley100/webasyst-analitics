@@ -6,7 +6,10 @@ class Puppeteer {
 
     }
     async start () {
-        this.browser = await puppeteer.launch({ headless: true });
+        this.browser = await puppeteer.launch({
+            headless: true,
+            args: ["--no-sandbox"]
+        });
     };
 
     async openPage () {
