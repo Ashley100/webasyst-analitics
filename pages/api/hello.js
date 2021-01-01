@@ -1,5 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import Google from '../../backend/parsers/google/google';
+import Google from '../../backend/parsers/google/google.js';
 
 export default async (req, res) => {
 
