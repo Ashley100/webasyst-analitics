@@ -10,11 +10,9 @@ class WebasystAnalytics extends App {
         super();
     }
 
-    static async getInitialProps({Component, ctx, reduxStore}) {
+    static async getInitialProps({Component, ctx}) {
 
-        let pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-
-        return pageProps;
+        return  Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
     }
 
