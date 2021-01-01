@@ -5,18 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "puppeteer": "^5.5.0",
     "@blueprintjs/core": "^3.36.0",
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
     "next": "10.0.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "sass": "^1.32.0"
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
-    "puppeteer": "^5.5.0"
+    "sass": "^1.32.0"
   }
 }
