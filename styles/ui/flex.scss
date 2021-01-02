@@ -1,0 +1,25 @@
+.db { display: block }
+.dib { display: inline-block }
+.df { display: flex }
+
+.fd-r  { flex-direction: row }
+.fd-rr { flex-direction: row-reverse }
+.fd-c  { flex-direction: column }
+.fd-cr { flex-direction: column-reverse }
+
+.jc-fs { justify-content: flex-start }
+.jc-fe { justify-content: flex-end }
+.jc-c  { justify-content: center }
+.jc-sb  { justify-content: space-between }
+.jc-se  { justify-content: space-evenly }
+.jc-sa  { justify-content: space-around }
+
+.ai-fs { align-items: flex-start }
+.ai-fe { align-items: flex-end }
+.ai-c  { align-items: center }
+.ai-s  { align-items: stretch }
+
+.fs-0 { flex-shrink: 0 }
+
+.fw-w { flex-wrap: wrap }
+.fw-n { flex-wrap: nowrap }

@@ -1,0 +1,41 @@
+/* Checkbox */
+.checkbox input[type="checkbox"],
+.radio input[type="radio"] { display: none; transition: .2s ease-in-out; }
+
+.checkbox input[type="checkbox"] ~ .label-item { display: flex; align-items: center; margin-bottom: 16px; cursor: pointer; }
+.checkbox input[type="checkbox"] ~ .label-item .costum-checkbox {
+  position: relative;
+  width: 36px;
+  height: 24px;
+  box-sizing: border-box;
+  transition: .2s ease-in-out;
+  border-radius: 24px;
+  background: var(--gray-4);
+  flex-shrink: 0;
+}
+.checkbox input[type="checkbox"]:checked ~ .label-item .costum-checkbox {
+  /* background-color: #0A6DF0; */
+}
+.costum-checkbox:after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  width: 16px;
+  height: 16px;
+  display: block;
+
+  background: #FFFFFF;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 24px;
+
+  transition: .1s ease-in-out;
+  flex-shrink: 0;
+}
+.checkbox input[type="checkbox"]:checked ~ .label-item .costum-checkbox { background-color: var(--red-2); }
+.checkbox input[type="checkbox"]:checked + .label-item .costum-checkbox:after {
+  left: calc(100% - 21px);
+  //right: 5px;
+}
+.checkbox input[type="checkbox"] + .label-item p         {  }
+.checkbox input[type="checkbox"]:checked + .label-item p {  }

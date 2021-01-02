@@ -5,10 +5,7 @@ export default class MyDocument extends Document {
         return (
             <html>
                 <Head>
-                    <link
-                        rel="stylesheet"
-                        href={`${this.props.__NEXT_DATA__.assetPrefix}/_next/static/style.css`}
-                    />
+                    
                 </Head>
                 <body>
 

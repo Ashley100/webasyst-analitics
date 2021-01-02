@@ -1,0 +1,48 @@
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+
+  font-size: 14px;
+  line-height: 1;
+  padding: 13px 22px 14px 22px;
+
+  transition: .1s ease-in-out;
+}
+
+textarea:focus,
+textarea:active,
+input[type="text"]:focus,
+input[type="text"]:active,
+input[type="password"]:focus,
+input[type="password"]:active,
+input[type="email"]:focus,
+input[type="email"]:active,
+input[type="number"]:focus,
+input[type="number"]:active,
+input[type="tel"]:focus,
+input[type="tel"]:active,
+input[type="range"]:focus,
+input[type="range"]:active,
+input[type="search"]:focus,
+input[type="search"]:active {
+  background-color: #fff;
+}

@@ -1,0 +1,16 @@
+button,
+input[type=button],
+input[type=submit],
+.btn {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.bordered {
+  border: 1px solid inherit;
+}

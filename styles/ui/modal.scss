@@ -1,0 +1,25 @@
+.modal {
+  display: none;
+  &.active {
+    display: block;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.80);
+    opacity: 0;
+  }
+}
+
+// anim
+@keyframes modal__in__anim {
+  0% { transform: scale(0); opacity: 0 }
+  80% { transform: scale(1.1) }
+  100% { transform: scale(1); opacity: 1 }
+}
+@keyframes modal__out__anim {
+  0% { transform: scale(1); opacity: 1 }
+  100% { transform: scale(1.1);  opacity: 0  }
+}

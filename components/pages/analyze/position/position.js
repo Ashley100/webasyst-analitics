@@ -1,6 +1,9 @@
-import {Button, Card, Dialog, Icon, InputGroup, Spinner} from "@blueprintjs/core";
+import {Button, Checkbox, Dialog, Icon, InputGroup, Spinner} from "@blueprintjs/core";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import PositionHeader from "./components/position-header";
+import PositionForm from "./components/position-form";
+import PositionTable from "./components/position-position-table";
 
 export default function Position () {
     const [data, setData] = useState( {data: 'asd'} );
@@ -52,32 +55,20 @@ export default function Position () {
                 return (
                     <table className="bp3-html-table modifier block-dark">
                         <thead>
-                        <tr>
-                            <th>Search system</th>
-                            <th>Position</th>
-                            <th>Page</th>
-                            <th>Photo</th>
-                        </tr>
+                            <tr>
+                                <th>Search system</th>
+                                <th>Position</th>
+                                <th>Page</th>
+                                <th>Photo</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>{data.parse.result.searchSystem}</td>
-                            <td>{data.parse.result.position}</td>
-                            <td>{data.parse.result.page}</td>
-                            <td>{parsedImage(data)}</td>
-                        </tr>
-                        {/*<tr>*/}
-                        {/*    <td>Yandex</td>*/}
-                        {/*    <td>Static analysis linter for TypeScript</td>*/}
-                        {/*    <td>TypeScript</td>*/}
-                        {/*    <td><img src="asdasd"/></td>*/}
-                        {/*</tr>*/}
-                        {/*<tr>*/}
-                        {/*    <td>Yahoo</td>*/}
-                        {/*    <td>Composable charting library built on top of D3</td>*/}
-                        {/*    <td>SVG, TypeScript, D3</td>*/}
-                        {/*    <td><img src="asdasd"/></td>*/}
-                        {/*</tr>*/}
+                            <tr>
+                                <td>{data.parse.result.searchSystem}</td>
+                                <td>{data.parse.result.position}</td>
+                                <td>{data.parse.result.page}</td>
+                                <td>{parsedImage(data)}</td>
+                            </tr>
                         </tbody>
                     </table>
                 )
@@ -88,7 +79,11 @@ export default function Position () {
     return (
         <div>
 
+            <PositionHeader/>
 
+            <PositionForm/>
+
+            <PositionTable />
 
             <InputGroup
                 disabled={false}
@@ -100,6 +95,18 @@ export default function Position () {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
+
+            <div className="df ai-c">
+                <Checkbox className="df ai-c mr-18" checked={true} onChange={() => {}}>
+                    <img src="https://image.flaticon.com/icons/png/512/281/281764.png" style={{width: '16px', marginRight: '8px'}}/>
+                    Google
+                </Checkbox>
+                <Checkbox className="df ai-c" checked={false} onChange={() => {}}>
+                    <img src="https://image.flaticon.com/icons/png/512/226/226266.png" style={{width: '16px', marginRight: '8px'}}/>
+                    Yandex
+                </Checkbox>
+            </div>
+
             <Button icon="refresh" intent="primary" text="Find" onClick={findSite} />
             {isFetching && <Spinner intent={'primary'} size={50} />}
 

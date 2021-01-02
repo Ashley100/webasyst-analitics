@@ -1,0 +1,170 @@
+:root {
+  --white-1: #fff;
+
+  --gray-1: #F5F7F9;
+  --gray-2: #EFF3F6;
+  --gray-3: #C4C4C4;
+  --gray-4: #DDDCD5;
+  --gray-5: #EDEDED;
+
+  --black-1: #000000;
+  --black-2: #696867;
+
+  --green-1: #2B7B3B;
+  --green-2: #edf2f1;
+  --green-3: #A3C6AA;
+  --green-4: #369B4A;
+  --green-5: #52935f;
+
+  --red-1: #EB001B;
+  --red-2: #FF5D2C;
+  --red-3: #f6eeed;
+  --red-4: #fd7c55;
+
+  --orange-1: #FFCA40;
+  --orange-2: #FFBA07;
+  --orange-3: #ffe49f;
+  --orange-4: #FFE5A0;
+  --orange-5: #FFF6DE;
+  --orange-6: #FFD977;
+
+  --blue-1: #132B81;
+  --blue-2: #1E42BF;
+  --blue-3: #132B81;
+}
+
+// colors
+.c-inherit { color: inherit }
+
+.c-white-1 { color: var(--white-1) }
+
+.c-gray-1 { color: var(--gray-1) }
+.c-gray-2 { color: var(--gray-2) }
+.c-gray-3 { color: var(--gray-3) }
+.c-gray-4 { color: var(--gray-4) }
+
+.c-black-1 { color: var(--black-1) }
+.c-black-2 { color: var(--black-2) }
+
+.c-green-1 { color: var(--green-1) }
+.c-green-2 { color: var(--green-2) }
+.c-green-3 { color: var(--green-3) }
+
+.c-red-1 { color: var(--red-1) }
+.c-red-2 { color: var(--red-2) }
+.c-red-3 { color: var(--red-3) }
+
+.c-orange-1 { color: var(--orange-1) }
+.c-orange-2 { color: var(--orange-2) }
+.c-orange-3 { color: var(--orange-3) }
+.c-orange-4 { color: var(--orange-4) }
+.c-orange-5 { color: var(--orange-5) }
+
+.c-blue-1 { color: var(--blue-1) }
+.c-blue-2 { color: var(--blue-2) }
+.c-blue-3 { color: var(--blue-3) }
+
+// background
+.bg-inherit { background-color: inherit }
+
+.bg-white-1 { background-color: var(--white-1) }
+
+.bg-gray-1 { background-color: var(--gray-1) }
+.bg-gray-2 { background-color: var(--gray-2) }
+.bg-gray-3 { background-color: var(--gray-3) }
+.bg-gray-4 { background-color: var(--gray-4) }
+
+.bg-black-1 { background-color: var(--black-1) }
+.bg-black-2 { background-color: var(--black-2) }
+
+.bg-green-1 { background-color: var(--green-1) }
+.bg-green-2 { background: rgba(43, 123, 59, 0.04) }
+.bg-green-3 { background-color: var(--green-3) }
+
+.bg-red-1 { background-color: var(--red-1) }
+.bg-red-2 { background-color: var(--red-2) }
+.bg-red-3 { background: rgba(255, 93, 44, 0.06); }
+
+.bg-orange-1 { background-color: var(--orange-1) }
+.bg-orange-2 { background-color: var(--orange-2) }
+.bg-orange-3 { background-color: var(--orange-3) }
+.bg-orange-4 { background-color: var(--orange-4) }
+.bg-orange-5 { background-color: var(--orange-5) }
+
+.bg-blue-1 { background-color: var(--blue-1) }
+.bg-blue-2 { background-color: var(--blue-2) }
+.bg-blue-3 { background-color: var(--blue-3) }
+
+
+
+// hovers colors
+.h\:c-inherit:hover { color: inherit }
+
+.h\:c-black-1:hover { color: var(--black-1) }
+.h\:c-black-2:hover { color: var(--black-2) }
+
+.h\:c-white-1:hover { color: var(--white-1) }
+
+.h\:c-gray-5:hover { color: var(--gray-5) }
+
+.h\:c-blue-1:hover { color: var(--blue-1) }
+.h\:c-blue-2:hover { color: var(--blue-2) }
+.h\:c-blue-3:hover { color: var(--blue-3) }
+
+.h\:c-red-2:hover { color: var(--red-2) }
+
+
+
+
+// hover backgrounds
+.h\:bg-white-1:hover { background-color: var(--white-1) }
+
+.h\:bg-gray-4:hover { background-color: var(--gray-4) }
+.h\:bg-gray-5:hover { background-color: var(--gray-5) }
+
+.h\:bg-green-4:hover { background-color: var(--green-4) }
+.h\:bg-green-5:hover { background-color: var(--green-5) }
+
+.h\:bg-blue-2:hover { background-color: var(--blue-2) }
+
+.h\:bg-red-1:hover { background-color: var(--red-1) }
+.h\:bg-red-2:hover { background-color: var(--red-2) }
+.h\:bg-red-4:hover { background-color: var(--red-4) }
+
+.h\:bg-orange-1:hover { background-color: var(--orange-1) }
+.h\:bg-orange-2:hover { background-color: var(--orange-2) }
+.h\:bg-orange-6:hover { background-color: var(--orange-6) }
+
+
+
+
+// svg
+.bs-white-1 * { color: transparent; stroke: var(--white-1) }
+
+.bs-gray-1 * { color: transparent; stroke: var(--gray-1) }
+.bs-gray-2 * { color: transparent; stroke: var(--gray-2) }
+.bs-gray-3 * { color: transparent; stroke: var(--gray-3) }
+.bs-gray-4 * { color: transparent; stroke: var(--gray-4) }
+
+.bs-black-1 * { color: transparent; stroke: var(--black-1) }
+.bs-black-2 * { color: transparent; stroke: var(--black-2) }
+
+.bs-blue-1 * { color: transparent; stroke: var(--blue-1) }
+.bs-blue-2 * { color: transparent; stroke: var(--blue-2) }
+
+.bs-red-2 * { color: transparent; stroke: var(--red-2) }
+
+
+// svg hover
+.h\:bs-white-1:hover * { color: transparent; stroke: var(--white-1) }
+
+.h\:bs-gray-1:hover * { color: transparent; stroke: var(--gray-1) }
+.h\:bs-gray-2:hover * { color: transparent; stroke: var(--gray-2) }
+.h\:bs-gray-3:hover * { color: transparent; stroke: var(--gray-3) }
+.h\:bs-gray-4:hover * { color: transparent; stroke: var(--gray-4) }
+
+.h\:bs-black-1:hover * { color: transparent; stroke: var(--black-1) }
+.h\:bs-black-2:hover * { color: transparent; stroke: var(--black-2) }
+
+.h\:bs-blue-1:hover * { color: transparent; stroke: var(--blue-1) }
+.h\:bs-blue-2:hover * { color: transparent; stroke: var(--blue-2) }

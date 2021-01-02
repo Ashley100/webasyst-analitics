@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import MainLayout from "../components/layouts/main/MainLayout";
 import App from "next/app";
 import React, { Component } from 'react';
@@ -17,7 +17,7 @@ class WebasystAnalytics extends App {
     }
 
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component } = this.props;
 
         return (
             <MainLayout props={this.props}>

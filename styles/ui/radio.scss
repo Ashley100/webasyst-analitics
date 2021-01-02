@@ -1,0 +1,54 @@
+.radio input[type=radio]~.label-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer
+}
+
+.radio input[type=radio]~.label-item .costum-radio {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--black-2);
+  box-sizing: border-box;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: .2s ease-in-out
+}
+
+.radio input[type=radio]:checked~.label-item .costum-radio {
+  border-color: var(--blue-1)
+}
+
+.costum-radio:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 5px;
+  height: 5px;
+  background: var(--blue-1);
+  border-radius: 10px;
+  display: block;
+  transform: scale(0);
+  opacity: 0;
+  transition: .2s ease-in-out
+}
+
+.radio input[type=radio]:checked+.label-item .costum-radio:after {
+  opacity: 1;
+  transform: scale(1)
+}
+
+.radio input[type=radio]+.label-item p {
+  margin: 0 0 0 10px;
+  font-size: 14px;
+  color: var(--black-1);
+  user-select: none;
+}
+
+.radio input[type=radio]+.label-item p:hover {
+}
+
+.radio input[type=radio]:checked+.label-item p {
+  color: var(--blue-1);
+}
