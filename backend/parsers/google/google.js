@@ -2,10 +2,10 @@ import getPositionInfo from "./utils/position";
 
 /**
  * Class takes <object> params: {
- *      findSite: 'string',
- *      keyWords: ['array of keywords'],
- *      region: 'string',
- *      utilsList: ['array of utils.'],
+ *      @findSite: 'string',
+ *      @keyWords: ['array of keywords'],
+ *      @region: 'string',
+ *      @utilsList: ['array of utils.'],
  * }
  * @returns { object }
  *
@@ -21,10 +21,15 @@ import getPositionInfo from "./utils/position";
 class Google {
     constructor(props) {
         this.options = {
-            findSite  : props.findSite,
-            keyWords  : props.keyWords,
-            region    : props.region,
-            utilsList : props.utilsList,
+            findSite    : props.searchSite,
+            system      : props.searchSystem,
+            keyWords    : props.searchKeywords,
+            location    : {
+                country : {},
+                region  : props.searchLocation.region.name + " " + props.searchLocation.region.type_short,
+                city    : {}
+            },
+            utilsList   : props.utilsList,
         }
     }
 
@@ -33,13 +38,13 @@ class Google {
             options = { ...this.options };
 
         if(options.utilsList.includes('position')) {
-            promises.push(await getPositionInfo({findSite: 'avito.ru'}));
+            promises.push(await getPositionInfo(options));
         }
-        if(options.utilsList.includes('competitors')) {
-            promises.push(await getPositionInfo({findSite: 'svyaznoy.ru'}));
-        }
+        // if(options.utilsList.includes('competitors')) {
+        //     promises.push(await getPositionInfo(options));
+        // }
 
-        let data = Promise.all([
+        return Promise.all([
             ...promises
         ]).then(res => {
             return res;
@@ -47,10 +52,25 @@ class Google {
             throw err;
         });
 
-
-        return data;
     };
 }
 
+let d = {
+    meta: {
+        title: {
+            name: 'Title',
+            text: 'Рюкзаки и аксессуары в Казани',
+            textLength: 29,
+            icon: 'some-icon'
+        },
+        description: {
+            name: 'Description',
+            text: 'Интернет-магазин рюкзаков, сумок, кошельков и аксессуаров в Казани. Большой выбор оригинальных и качественных городских моделей.',
+            textLength: 128,
+            icon: 'some-icon'
+        }
+    }
+
+}
 
 export default Google;

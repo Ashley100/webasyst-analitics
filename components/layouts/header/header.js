@@ -10,7 +10,16 @@ export default function Header () {
             <Navbar>
                 <div className={`container-large`} style={{backgroundColor: "#394b59", display: 'block'}}>
                     <Navbar.Group align={'left'}>
-                        <Navbar.Heading>Blueprint</Navbar.Heading>
+                        <Navbar.Heading>
+                            <span style={{fontWeight: '600'}}>
+                                <span style={{color: '#000'}}>Web</span>
+                                <span style={{color: '#08e'}}>a</span>
+                                <span style={{color: '#2c2'}}>s</span>
+                                <span style={{color: '#e62'}}>y</span>
+                                <span style={{color: '#fc0'}}>s</span>
+                                <span style={{color: '#5dd'}}>t</span>
+                            </span> Analytics
+                        </Navbar.Heading>
                     </Navbar.Group>
 
                     <Navbar.Group align={'right'}>

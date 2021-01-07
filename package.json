@@ -18,6 +18,7 @@
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "@blueprintjs/select": "^3.15.0",
     "sass": "^1.32.0"
   }
 }

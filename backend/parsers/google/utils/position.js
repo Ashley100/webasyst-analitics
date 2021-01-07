@@ -6,13 +6,13 @@ import {toBase64} from "next/dist/next-server/lib/to-base-64";
 class Position extends Puppeteer {
     constructor(props) {
         super ();
-
+        console.log(props);
         this.findSite = props.findSite;
         this.search = {
             params: {
                 searchUrl: 'https://www.google.com/search?q=',
-                // searchKeys: 'Рюкзаки, кошельки, сумки, аксессуары москва',
-                searchKeys: 'купить iphone москва',
+                // searchKeywords: 'Рюкзаки, кошельки, сумки, аксессуары москва',
+                searchKeywords: props.keyWords.join('') + " " + props.location.region,
                 findSite: props.findSite,
                 tbas: 0,
                 start: 0
@@ -59,7 +59,7 @@ class Position extends Puppeteer {
         async function find () {
             if (!result.isFound && that.pagination.current <= 100) {
 
-                const searchUrl = `${searchParams.searchUrl}${searchParams.searchKeys}&start=${that.pagination.current}`;
+                const searchUrl = `${searchParams.searchUrl}${searchParams.searchKeywords}&start=${that.pagination.current}`;
 
                 await that.gotoPage(searchUrl,{waitUntil: 'domcontentloaded', timeout: 5000});
 
@@ -79,7 +79,7 @@ class Position extends Puppeteer {
                     type: 'jpeg',
                     fullPage: true,
                 }).then(res => {
-                    // that.search.result.screenShot = toBase64(res);
+                    that.search.result.screenShot = toBase64(res);
                     // console.log(res);
                 });
 

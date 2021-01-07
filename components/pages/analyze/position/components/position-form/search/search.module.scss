@@ -1,0 +1,9 @@
+.position__search {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 24px;
+
+  .input__text {
+    input { border-radius: 3px; }
+  }
+}

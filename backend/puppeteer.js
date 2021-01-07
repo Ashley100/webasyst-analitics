@@ -1,15 +1,15 @@
 import puppeteer from 'puppeteer';
-import libraries from './tools/libraries';
 
 class Puppeteer {
-    constructor(props) {
+    constructor(props) {}
 
-    }
     async start () {
         this.browser = await puppeteer.launch({
             headless: true,
+            slowMo: 100,
             args: [
                 '--no-sandbox',
+                // '--proxy-server=185.34.22.225:37879'
             ],
         });
     };
@@ -39,6 +39,4 @@ class Puppeteer {
     };
 }
 
-export default Puppeteer;
-
-// https://www.google.com/search?q=Рюкзаки, кошельки, сумки, аксессуары москва&as_qdr=all&tbas=0&start=100&sa=N
+export default Puppeteer

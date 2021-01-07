@@ -1,20 +1,61 @@
+import React, {useState} from "react";
 import {Icon, Menu, MenuDivider, MenuItem} from "@blueprintjs/core";
 import Link from "next/link";
 
 export default function Sidebar () {
+
+    const [links, setLinks] = useState([
+        { id: "1", href: "/analyze/siteinfo", active: false, tagName: "a", icon: "info-sign", text: "Информация о сайте" },
+        { id: "2", href: "/analyze/position", active: false, tagName: "a", icon: "numbered-list", text: "Позиция в выдаче" },
+        { id: "3", href: "/analyze/competitors", active: false, tagName: "a", icon: "comparison", text: "Поиск конкурентов" },
+        { id: "4", href: "/analyze/indexation", active: false, tagName: "a", icon: "path-search", text: "Проверка индекцации" },
+        { id: "5", href: "/analyze/todolist", active: false, tagName: "a", icon: "add-to-artifact", text: "Todo list" },
+    ]);
+
+    function onClickMenuItem (link) {
+        let updatedLinks = links.map(l => {
+           l.active = link.id === l.id;
+           return l
+        });
+        setLinks(updatedLinks);
+    };
+
     return (
         <Menu className={`right-sidebar`} style={{backgroundColor: "#394b59"}}>
-            <MenuItem icon={'menu'} text="Навигация" />
+            <MenuItem tagName={'div'} icon={'menu'} text="Навигация" />
             <MenuDivider />
-            <MenuItem icon={'search'} text={<Link href="/analyze/position/"><a>Позиция в выдаче</a></Link>} />
-            <MenuItem icon={'new-text-box'} text={<Link href="/analyze/competitors/"><a>Поиск конкурентов</a></Link>} />
-            <MenuItem icon={'new-object'} text={<Link href="/analyze/indexation/"><a>Проверка индекцации</a></Link>} />
-            {/*<Link href="/analyze/position/"> <MenuItem icon={'search'} text="Позиция в выдаче" /> </Link>*/}
-            {/*<Link href="/analyze/competitors/"> <MenuItem icon="new-text-box" text="Поиск конкурентов" /> </Link>*/}
-            {/*<Link href="/analyze/indexation/"> <MenuItem icon="new-object" text="Проверка индекцации" /> </Link>*/}
-            <MenuItem icon="new-link" text="New link" />
+
+            {links.map(link => {
+                return (
+                    <Link href={link.href} key={link.id}>
+                        <MenuItem
+                            tagName={link.tagName}
+                            active={link.active}
+                            icon={link.icon}
+                            text={link.text}
+                            onClick={() => onClickMenuItem(link)}
+                        />
+                    </Link>
+                )
+            })}
+
+            {/*<Link href="/analyze/siteinfo/">*/}
+            {/*    <MenuItem tagName={'a'} icon={'info-sign'} text={'Информация о сайте'} />*/}
+            {/*</Link>*/}
+            {/*<Link href="/analyze/position/">*/}
+            {/*    <MenuItem tagName={'a'} icon={'numbered-list'} text={'Позиция в выдаче'} />*/}
+            {/*</Link>*/}
+            {/*<Link href="/analyze/competitors/">*/}
+            {/*    <MenuItem tagName={'a'} icon={'comparison'} text={'Поиск конкурентов'} />*/}
+            {/*</Link>*/}
+            {/*<Link href="/analyze/indexation/">*/}
+            {/*    <MenuItem tagName={'a'} icon={'path-search'} text={'Проверка индекцации'} />*/}
+            {/*</Link>*/}
+            {/*<Link href="/analyze/todolist/">*/}
+            {/*    <MenuItem tagName={'a'} icon={'add-to-artifact'} text={'Todo list'} />*/}
+            {/*</Link>*/}
             <MenuDivider />
-            <MenuItem icon="cog" labelElement={<Icon icon="share" />} text="Settings..." />
+            <MenuItem tagName={'a'} icon="cog" labelElement={<Icon icon="share" />} text="Settings..." />
         </Menu>
     )
 }
