@@ -12,6 +12,7 @@ export default function PositionForm () {
 
     let [data, setData] = useState({});
 
+    let [isFormReady, setFormReady] = useState(false);
     let [searchText, setSearchText] = useState('');
     let [searchSystem, setSearchSystem] = useState({ google: true, yandex: false });
     let [searchRegion, setSearchRegion] = useState('');
@@ -68,13 +69,17 @@ export default function PositionForm () {
 
     const parsedTable = (data) => {
 
-        if (Object.keys(data).length !== 0) {
-            if (data.parse) {
+        console.log(Object.values(data.parse.google));
+
+        if (Object.keys(data.parse.google).length !== 0) {
+            if (data.parse.google) {
+
                 return (
                     <React.Suspense fallback={renderLoader()}>
-                        {data.parse.map(el => <PositionTable tableInfo={el} />)}
+                        {Object.values(data.parse.google).map((el, i) => <PositionTable key={i} tableInfo={el} />)}
                     </React.Suspense>
                 )
+                    //
             }
         } else {
             return (
@@ -91,7 +96,13 @@ export default function PositionForm () {
     return (
         <div className="position__form w-full">
 
-            <PositionFormSearch searchText={searchText} setSearchText={setSearchText} onSubmit={findSite}/>
+            <PositionFormSearch
+                searchText={searchText}
+                setSearchText={setSearchText}
+                onSubmit={findSite}
+                isFormReady={isFormReady}
+                setFormReady={setFormReady}
+            />
 
             <div className="df ai-c jc-sb mt-12 mb-48">
                 <div className="w-full">

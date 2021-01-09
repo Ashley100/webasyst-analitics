@@ -15,11 +15,11 @@ class Puppeteer {
     };
 
     async openPage () {
-        this.page = await this.browser.newPage();
+        return await this.browser.newPage();
     };
 
-    async gotoPage (url, opt) {
-        await this.page.goto(url, opt).then(res => {
+    async gotoPage (page, url, opt) {
+        await page.goto(url, opt).then(res => {
             return { status: 'ok', res: {...res} };
         }).catch(err => {
             throw { status: 'error', err: {...err} };

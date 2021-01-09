@@ -31,9 +31,9 @@ export default function PositionTable ({tableInfo}) {
                 </tbody>
             </table>
 
-            {/*<pre style={{maxWidth: '600px', overflow: 'hidden'}}>*/}
-            {/*  {JSON.stringify(tableInfo.findSite, false, 4)}*/}
-            {/*</pre>*/}
+            <pre style={{maxWidth: '600px', overflow: 'hidden'}}>
+              {JSON.stringify(tableInfo, false, 4)}
+            </pre>
         </>
     )
 };

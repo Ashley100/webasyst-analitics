@@ -1,19 +1,19 @@
-import Puppeteer from "../../../puppeteer";
 import cheerio from 'cheerio';
 import tools from "../../../tools/tools";
 import {toBase64} from "next/dist/next-server/lib/to-base-64";
 
-class Position extends Puppeteer {
-    constructor(props) {
-        super ();
-        console.log(props);
-        this.findSite = props.findSite;
+class Position {
+    constructor({puppeteer, page, options}) {
+        this.page = page;
+        this.puppeteer = puppeteer;
+
+        this.findSite = options.findSite;
         this.search = {
             params: {
                 searchUrl: 'https://www.google.com/search?q=',
                 // searchKeywords: 'Рюкзаки, кошельки, сумки, аксессуары москва',
-                searchKeywords: props.keyWords.join('') + " " + props.location.region,
-                findSite: props.findSite,
+                searchKeywords: options.keyWords.join('') + " " + options.location.region,
+                findSite: options.findSite,
                 tbas: 0,
                 start: 0
             },
@@ -31,20 +31,18 @@ class Position extends Puppeteer {
         this.selectors = {
             linksSelector: '.rc cite'
         };
+
     }
 
     async parse () {
-        await this.start();
-
-        await this.openPage();
 
         let data = await this.findSitePosition(this.findSite);
 
         console.log("data ", data);
 
-        await this.closeBrowser();
-
         data.findSite = this.findSite;
+
+        await this.page.close();
 
         return data;
     };
@@ -61,7 +59,7 @@ class Position extends Puppeteer {
 
                 const searchUrl = `${searchParams.searchUrl}${searchParams.searchKeywords}&start=${that.pagination.current}`;
 
-                await that.gotoPage(searchUrl,{waitUntil: 'domcontentloaded', timeout: 5000});
+                await that.puppeteer.gotoPage(that.page, searchUrl, { waitUntil: 'domcontentloaded', timeout: 5000 });
 
                 result = await that.findLinkOnPage();
 
@@ -79,7 +77,7 @@ class Position extends Puppeteer {
                     type: 'jpeg',
                     fullPage: true,
                 }).then(res => {
-                    that.search.result.screenShot = toBase64(res);
+                    // that.search.result.screenShot = toBase64(res);
                     // console.log(res);
                 });
 
@@ -96,13 +94,13 @@ class Position extends Puppeteer {
     };
 
     async findLinkOnPage () {
-        this.page.addScriptTag(tools.libraries.jquery);
+        // await this.page.addScriptTag(tools.libraries.jquery);
 
         const that = this;
 
         await this.page.mouse.wheel({ deltaY: 10000 });
 
-        let waiting = await this.waitSelector(this.selectors.linksSelector, { timeout: 4000 });
+        let waiting = await this.puppeteer.waitSelector(this.selectors.linksSelector, { timeout: 4000 });
 
         const content = await this.page.content();
 
@@ -126,18 +124,21 @@ class Position extends Puppeteer {
             that.search.result.position++;
             return tools.url.clearUrl(url);
         });
+        let cleanFindSite = tools.url.clearUrl(this.findSite);
+
+        console.log("util:position > isFound", cleanLinks.includes(this.findSite), cleanFindSite);
 
         return {
             links: cleanLinks,
-            isFound: cleanLinks.includes(this.findSite),
+            isFound: cleanLinks.includes(cleanFindSite),
         };
     };
 }
 
 
-const getPositionInfo = async (props) => {
-    const positionInfo = new Position(props);
-    return await positionInfo.parse();
+const getPositionInfo = (options) => {
+    // const positionInfo = new Position(options);
+    return new Position(options);
 };
 
 export default getPositionInfo;

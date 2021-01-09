@@ -1,10 +1,12 @@
+import Puppeteer from "../../puppeteer";
 import getPositionInfo from "./utils/position";
 
 /**
  * Class takes <object> params: {
- *      @findSite: 'string',
- *      @keyWords: ['array of keywords'],
- *      @region: 'string',
+ *      @searchSite: 'string',
+ *      @searchSystem: 'string',
+ *      @searchKeywords: ['array of keywords'],
+ *      @searchLocation: <object>,
  *      @utilsList: ['array of utils.'],
  * }
  * @returns { object }
@@ -18,8 +20,10 @@ import getPositionInfo from "./utils/position";
  * }
  * const googleParse = new Google (options);
  */
-class Google {
+class Google extends Puppeteer {
     constructor(props) {
+        super();
+
         this.options = {
             findSite    : props.searchSite,
             system      : props.searchSystem,
@@ -30,47 +34,39 @@ class Google {
                 city    : {}
             },
             utilsList   : props.utilsList,
-        }
+        };
     }
 
     async parse () {
+
+        await this.start();
+
         let promises = [],
             options = { ...this.options };
 
         if(options.utilsList.includes('position')) {
-            promises.push(await getPositionInfo(options));
+            console.log("if position");
+            this.positionPage = await this.openPage();
+            let positionPageInstance = getPositionInfo({puppeteer: this, page: this.positionPage, options});
+            promises.push(positionPageInstance.parse());
         }
         // if(options.utilsList.includes('competitors')) {
-        //     promises.push(await getPositionInfo(options));
+        //     console.log("if competitors");
+        //     this.competitorsPage = await this.openPage();
+        //     let competitorsPageInstance = getPositionInfo({puppeteer: this, page: this.competitorsPage, options: { ...options, keyWords: ['Купить рюкзак'], findSite: 'https://avito.ru/' }});
+        //     promises.push(competitorsPageInstance.parse());
         // }
 
         return Promise.all([
             ...promises
-        ]).then(res => {
-            return res;
-        }).catch(err => {
-            throw err;
+        ])
+        .then(async res =>  res)
+        .catch(async err => {throw err})
+        .finally(async res => {
+            await this.closeBrowser();
         });
 
     };
-}
-
-let d = {
-    meta: {
-        title: {
-            name: 'Title',
-            text: 'Рюкзаки и аксессуары в Казани',
-            textLength: 29,
-            icon: 'some-icon'
-        },
-        description: {
-            name: 'Description',
-            text: 'Интернет-магазин рюкзаков, сумок, кошельков и аксессуаров в Казани. Большой выбор оригинальных и качественных городских моделей.',
-            textLength: 128,
-            icon: 'some-icon'
-        }
-    }
-
 }
 
 export default Google;

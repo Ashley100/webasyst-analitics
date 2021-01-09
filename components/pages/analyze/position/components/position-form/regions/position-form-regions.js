@@ -17,6 +17,13 @@ export const PositionFormRegions = ({searchRegion, setSearchRegion}) => {
         let sortedByQuery = regionsData.filter(region => region.name.includes(query));
         setRegions(sortedByQuery);
     };
+    const createNewRegionItemFromQuery = query => {
+        return {
+            id: regions.length + 1,
+            type_short: "",
+            name: query
+        };
+    };
 
     const handleClick = (item) => {
         console.log('clicked', item);
@@ -42,6 +49,8 @@ export const PositionFormRegions = ({searchRegion, setSearchRegion}) => {
                filterable={true}
                className={'position-form-regions'}
                // itemPredicate={'Films.itemPredicate'}
+               createNewItemFromQuery={createNewRegionItemFromQuery}
+               createNewItemRenderer={itemRenderer}
                itemRenderer={itemRenderer}
                noResults={"No results."}
                onItemSelect={handleClick}

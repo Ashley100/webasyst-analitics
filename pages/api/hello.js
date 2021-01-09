@@ -1,4 +1,5 @@
 import Google from '../../backend/parsers/google/google.js';
+import Vk from '../../backend/parsers/vk/vk';
 
 /**
  *  Entry data structure in req.body
@@ -14,7 +15,7 @@ export default async (req, res) => {
 
   const { data } = req.body;
 
-  console.log(data.text);
+  console.log("hello.js >> ", data);
 
   const parseGoogle = new Google ({
       searchSite: data.searchSite,
@@ -24,9 +25,16 @@ export default async (req, res) => {
       utilsList: ['position', 'competitors', 'indexation'],
   });
 
-  let parse = await parseGoogle.parse();
+  const parseVk = new Vk ({
+      dataToParse: "Some data to parsing. Like site url, name, keywords, etc."
+  });
 
-  console.log("hello.js => ", parse);
+  let parse = {
+      google: {...await parseGoogle.parse()},
+      vk: {...await parseVk.parse()}
+  };
+
+  console.log("hello.js => parseGoogle.parse() => ", parse);
 
   res.statusCode = 200;
   res.json({ name: 'John Doe', parse: parse });
